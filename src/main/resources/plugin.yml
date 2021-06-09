@@ -1,0 +1,10 @@
+name: Agora
+version: none
+main: com.bins.agora.Agora
+api-version: 1.16
+depend: [ ProtocolLib, Citizens, WorldGuard ]
+authors: [ A_bins ]
+commands:
+  test:
+  lobby:
+    aliases: [ l, lo, lob, lobb, spawn, home, 로비, 로, 넴주 ]
