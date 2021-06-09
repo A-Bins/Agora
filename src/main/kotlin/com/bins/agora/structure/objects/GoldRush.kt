@@ -1,5 +1,6 @@
 package com.bins.agora.structure.objects
 
+import com.bins.agora.Agora
 import com.bins.agora.Agora.Companion.goldRush
 import com.bins.agora.Agora.Companion.ins
 import com.bins.ruins.utilities.Receiver.bb
@@ -7,7 +8,9 @@ import net.minecraft.server.v1_16_R3.Items.it
 import org.bukkit.Bukkit
 import org.bukkit.Sound
 import org.bukkit.entity.Player
+import java.util.*
 import kotlin.collections.ArrayList
+import kotlin.collections.HashMap
 
 //        if(!isStarting) return false
 //        if(waiters.size != 8) return false
@@ -16,8 +19,10 @@ class GoldRush {
         SHERIFF, OUTLAW, NOTHING
     }
     companion object{
-        val Player.team: Team
-            get() = Team.NOTHING
+        private val teams: HashMap<UUID, Team> = HashMap()
+        var Player.team: Team
+            get() { teams[uniqueId] }
+            private set(value) { teams[uniqueId] = value }
     }
     val waiters: ArrayList<Player> = arrayListOf()
     var isStarting = false
